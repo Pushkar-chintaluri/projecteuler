@@ -11,17 +11,17 @@ def is_prime(num):
     return True
 
 def largest_prime_factor(num):
-    """ Brute Force solution """
+    """A Dynamic Programming Solution -- Close to O(N) solution"""
 
 #    pdb.set_trace()
     primesDict = {1:True,2:True,3:True,4:False,5:True}
     n = 2
     factor = 0
     while num>1:
-        if not primesDict.has_key(n):
-            primesDict[n]=is_prime(n)
+        if not primesDict.has_key(n): # if number's prime status is not already known
+            primesDict[n]=is_prime(n) # calculate prime status
 
-        if primesDict[n]:
+        if primesDict[n]: # Look-up prime status in dictionary
             if num%n == 0:
                 factor = n
                 num = num/n
